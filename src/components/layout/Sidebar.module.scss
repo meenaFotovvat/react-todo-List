@@ -1,0 +1,49 @@
+.sidebar{
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .sidebar {
+    margin-left: 40px;
+    margin-bottom: 15px;
+    height: 100%;
+    width: 230px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 40px;
+    display: block;
+    border-right: 3px solid #f4f4f4;
+    cursor: pointer;
+    :first-child {
+      margin-bottom: 30px;
+    }
+    :nth-child(7) {
+      margin-top: 130px;
+    }
+    .span-style {
+      display: flex;
+      padding: 8px;
+      color: #999999;
+      &:hover {
+        color: #000;
+        font-weight: 700;
+      }
+      p {
+          font-size: 17px;
+          margin-left: 25px;
+      }
+      span {
+        font-size: 19px;
+      }
+    }
+    .span-bold-js {
+      display: flex;
+      padding: 8px;
+      color: #000;
+      font-weight: 700;
+    }
+  }
+}
+  
+

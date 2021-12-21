@@ -1,0 +1,411 @@
+.not-started-header-tasks,
+.in-progress-header-tasks,
+.complete-header-tasks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.not-started-header-tasks .h2-style,
+.in-progress-header-tasks .h2-style,
+.complete-header-tasks .h2-style {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  color: #020202;
+  font-size: large;
+}
+
+.not-started-header-tasks .not-started-task-counter,
+.not-started-header-tasks .in-progress-task-counter,
+.not-started-header-tasks .complete-task-counter,
+.in-progress-header-tasks .not-started-task-counter,
+.in-progress-header-tasks .in-progress-task-counter,
+.in-progress-header-tasks .complete-task-counter,
+.complete-header-tasks .not-started-task-counter,
+.complete-header-tasks .in-progress-task-counter,
+.complete-header-tasks .complete-task-counter {
+  width: 30px;
+  height: 30px;
+  background-color: #e9f2f1;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #2e9986;
+}
+
+.in-progress-header-tasks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.in-progress-header-tasks .h2-style {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  color: #020202;
+  font-size: large;
+}
+
+.in-progress-header-tasks .not-started-counter {
+  width: 30px;
+  height: 30px;
+  background-color: #e9f2f1;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #2e9986;
+}
+
+.complete-header-tasks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.complete-header-tasks .h2-style {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  color: #020202;
+  font-size: large;
+}
+
+.complete-header-tasks .not-started-counter {
+  width: 30px;
+  height: 30px;
+  background-color: #e9f2f1;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #2e9986;
+}
+
+.icon-plus-style {
+  width: 100%;
+  height: 30px;
+  background-color: #e9f1f0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.icon-plus-style i {
+  color: #52ab9a;
+}
+
+.task-style {
+  list-style-position: inside;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.task-style .deadline-style {
+  color: #db4c3f;
+}
+
+.task-style li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 5%;
+  margin-top: 20px;
+  padding-bottom: 5px;
+  padding: 10px 10px;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+}
+
+.task-style div {
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.task-style span {
+  font-size: 20px;
+  width: 100%;
+  height: 30px;
+  background-color: #e9f1f0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+  margin-top: 15px;
+  color: #52ab9a;
+}
+
+.task-style p {
+  margin-top: 15px;
+  text-align: justify;
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 768px) {
+  .task-lists .main-header {
+    font-size: x-large;
+    margin: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    max-width: 1000px;
+  }
+  .task-lists .main-header h1 {
+    font-weight: 700;
+  }
+  .task-lists .main-header .select-calender {
+    border: none;
+    font-size: 17px;
+    color: #161616;
+    background: #fefefe;
+  }
+  .task-lists .task-list-style {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    max-width: 1000px;
+  }
+  .task-lists .task-list-style .not-started-header-tasks,
+  .task-lists .task-list-style .in-progress-header-tasks,
+  .task-lists .task-list-style .complete-header-tasks {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .task-lists .task-list-style .not-started-header-tasks .h2-style,
+  .task-lists .task-list-style .in-progress-header-tasks .h2-style,
+  .task-lists .task-list-style .complete-header-tasks .h2-style {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    color: #020202;
+    font-size: large;
+  }
+  .task-lists .task-list-style .not-started-header-tasks .not-started-task-counter,
+  .task-lists .task-list-style .not-started-header-tasks .in-progress-task-counter,
+  .task-lists .task-list-style .not-started-header-tasks .complete-task-counter,
+  .task-lists .task-list-style .in-progress-header-tasks .not-started-task-counter,
+  .task-lists .task-list-style .in-progress-header-tasks .in-progress-task-counter,
+  .task-lists .task-list-style .in-progress-header-tasks .complete-task-counter,
+  .task-lists .task-list-style .complete-header-tasks .not-started-task-counter,
+  .task-lists .task-list-style .complete-header-tasks .in-progress-task-counter,
+  .task-lists .task-list-style .complete-header-tasks .complete-task-counter {
+    width: 30px;
+    height: 30px;
+    background-color: #e9f2f1;
+    border-radius: 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: #2e9986;
+  }
+  .task-lists .task-list-style .in-progress-header-tasks {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .task-lists .task-list-style .in-progress-header-tasks .h2-style {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    color: #020202;
+    font-size: large;
+  }
+  .task-lists .task-list-style .in-progress-header-tasks .not-started-counter {
+    width: 30px;
+    height: 30px;
+    background-color: #e9f2f1;
+    border-radius: 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: #2e9986;
+  }
+  .task-lists .task-list-style .complete-header-tasks {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .task-lists .task-list-style .complete-header-tasks .h2-style {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    color: #020202;
+    font-size: large;
+  }
+  .task-lists .task-list-style .complete-header-tasks .not-started-counter {
+    width: 30px;
+    height: 30px;
+    background-color: #e9f2f1;
+    border-radius: 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: #2e9986;
+  }
+  .task-lists .task-list-style .task-style {
+    list-style-position: inside;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+  }
+  .task-lists .task-list-style .task-style .deadline-style {
+    color: #db4c3f;
+  }
+  .task-lists .task-list-style .task-style li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 5%;
+    margin-top: 20px;
+    padding-bottom: 5px;
+    padding: 10px 10px;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+  }
+  .task-lists .task-list-style .task-style div {
+    font-weight: 700;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .task-lists .task-list-style .task-style span {
+    font-size: 20px;
+  }
+  .task-lists .task-list-style .task-style p {
+    margin-top: 15px;
+    text-align: justify;
+    font-size: 14px;
+  }
+}
+/*# sourceMappingURL=TaskPage.module.css.map */

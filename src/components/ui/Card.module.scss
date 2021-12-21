@@ -1,0 +1,17 @@
+.list-of-tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    background-color: #f6fafa;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #f5f7f7;
+    border-radius: 15px;
+    box-shadow: #f4f7f6;
+}
+
+@media only screen and (min-width: 768px) {
+    .list-of-tasks{
+        width: 31%;
+    }
+}

@@ -1,0 +1,93 @@
+.task-page {
+    z-index: 1;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: rgb(252, 249, 249);
+    border-radius: 10px;
+    padding: 30px;
+
+    .select-task {
+        background-color: transparent;
+        height: 30px;
+        padding: 0 1em 0 0.65em;
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: inherit;
+        line-height: inherit;
+    }
+
+    .close-img {
+        align-self: flex-end;
+        opacity: 0.4;
+    }
+
+    .description {
+        background-color: lighten(#a08888,40%);
+        border: 0;
+        padding: 5px;
+        border-radius: 3px;
+        &:focus {
+            outline: none;
+            border: 2px solid rgb(241, 211, 211);
+        }
+    }
+
+    .input-style {
+        background-color: lighten(#a08888,40%);
+        height: 30px;
+        border-radius: 5px;
+        padding: 5px;
+        border: 0;
+        &:focus {
+            outline: none;
+            border: 2px solid rgb(241, 211, 211);
+        }
+
+
+        &.input-title-style {
+            margin-bottom: 18px;
+        }
+    
+        &.task-datetime-style {
+            width: 100%;
+            font-family: arial, sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            background-color: lighten(#a08888,40%);
+            text-transform: uppercase;
+            border-radius: 3px;
+            color: rgb(202, 191, 191);
+            margin-top: 5px;
+        }
+    } 
+    .btn-container{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        .button-submit-style {
+            background-color: #db4c3f;
+            border: 0;
+            color: #fff;
+            height: 30px;
+            width: 70px;
+            border-radius: 3px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+        .delete-btn {
+            color: #db4c3f;
+            align-self: flex-end;
+            font-size: 30px;
+            border: none;
+            background-color: rgb(252, 249, 249);
+        }
+    }
+}
