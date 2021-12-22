@@ -10,7 +10,10 @@ import Backdrop from "../modal/Backdrop.js";
 import Modal from "../modal/Modal.js";
 
 function TaskList() {
-  const taskInfo = useContext(TaskContext);
+  const taskCtx = useContext(TaskContext);
+  const notStartedList = taskCtx.notStartedList;
+  const inProgressList = taskCtx.inProgressList;
+  const completeList = taskCtx.completeList;
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function openTaskHandler() {
@@ -21,28 +24,72 @@ function TaskList() {
     setModalIsOpen(false);
   }
 
+  const [value, setValue] = useState();
   return (
     <>
       <Card>
-        <TaskHeader title="Not started" />
+        <TaskHeader title="To Do" count={taskCtx.totalNotStartedTasks} />
         <PlusIconContainer onOpen={openTaskHandler} />
-        <ul className={classes["task-style"]}>
-          <TaskItems />
-        </ul>
+        {notStartedList && notStartedList.length > 0 && (
+          <ul className={classes["task-style"]}>
+            {notStartedList.map((item) => {
+              return (
+                <TaskItems
+                  key={item.id}
+                  id={item.id}
+                  taskTitle={item.taskTitle}
+                  taskType={item.taskType}
+                  taskDeadline={item.taskDeadline}
+                  taskDescription={item.taskDescription}
+                  taskReminder={item.taskReminder}
+                />
+              );
+            })}
+          </ul>
+        )}
+      </Card>
+
+      <Card>
+        <TaskHeader title="In Progress" count={taskCtx.totalInProgressTasks} />
+        <PlusIconContainer onOpen={openTaskHandler} />
+        {inProgressList && inProgressList.length > 0 && (
+          <ul className={classes["task-style"]}>
+            {inProgressList.map((item) => {
+              return (
+                <TaskItems
+                  key={item.id}
+                  id={item.id}
+                  taskTitle={item.taskTitle}
+                  taskType={item.taskType}
+                  taskDeadline={item.taskDeadline}
+                  taskDescription={item.taskDescription}
+                  taskReminder={item.taskReminder}
+                />
+              );
+            })}
+          </ul>
+        )}
       </Card>
       <Card>
-        <TaskHeader title="In progress" />
+        <TaskHeader title="Complete" count={taskCtx.totalcompleteTasks} />
         <PlusIconContainer onOpen={openTaskHandler} />
-        <ul className={classes["task-style"]}>
-          <TaskItems />
-        </ul>
-      </Card>
-      <Card>
-        <TaskHeader title="Complete" />
-        <PlusIconContainer onOpen={openTaskHandler} />
-        <ul className={classes["task-style"]}>
-          <TaskItems />
-        </ul>
+        {completeList && completeList.length > 0 && (
+          <ul className={classes["task-style"]}>
+            {completeList.map((item) => {
+              return (
+                <TaskItems
+                  key={item.id}
+                  id={item.id}
+                  taskTitle={item.taskTitle}
+                  taskType={item.taskType}
+                  taskDeadline={item.taskDeadline}
+                  taskDescription={item.taskDescription}
+                  taskReminder={item.taskReminder}
+                />
+              );
+            })}
+          </ul>
+        )}
       </Card>
       {modalIsOpen && (
         <Modal

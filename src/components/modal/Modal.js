@@ -6,21 +6,21 @@ import { useLocalStorage } from "../../lpers/localStorage/useLocalStorage.js";
 import classes from "./Modal.module.scss";
 import { mergeClasses } from "../../utils";
 import { useState } from "react/cjs/react.development";
+import TaskContext from "../store/task-context.js";
 
 function Modal(props) {
-  const [userTaskInfo, setUserTaskInfo] = useLocalStorage('listArr', []);
-  // const taskCtx = useContext(TaskContext);
-  const [form, setForm] = useState({})
+  const [userTaskInfo, setUserTaskInfo] = useLocalStorage("listArr", []);
+  const taskCtx = useContext(TaskContext);
+  const [form, setForm] = useState({});
   const handleChange = (ev) => {
-    ev.persist()
-    setForm(pre => ({...pre, [ev.target.name]: ev.target.value}))
-  }
+    ev.persist();
+    setForm((pre) => ({ ...pre, [ev.target.name]: ev.target.value }));
+  };
   const taskTitleRef = useRef();
   const taskDeadlineRef = useRef();
   const taskDescriptionRef = useRef();
   const taskReminderRef = useRef();
   const TaskTypeRef = useRef();
-
 
   function cancelHandler() {
     props.onCancel();
@@ -31,7 +31,6 @@ function Modal(props) {
   }
 
   function deleteHandler() {
-
     props.onDelete();
     // setUserTaskInfo((preTaskInfo) => {
     //   return preTaskInfo.filter((taskList) => taskList.id !== taskId);
@@ -43,7 +42,6 @@ function Modal(props) {
   }
 
   function submitHandler(event) {
-    // props.onSave();
     event.preventDefault();
 
     const enteredTitle = taskTitleRef.current.value;
@@ -59,20 +57,27 @@ function Modal(props) {
       taskReminder: enteredReminder,
       taskType: enteredType,
       id: Date.now().toString(),
-    }
+    };
     setUserTaskInfo((preTaskInfo) => {
       return preTaskInfo.concat(taskInfo);
     });
-    // taskCtx.saveTaskHandler(taskInfo);
-    setTimeout(props.onSave)
+    let t = taskCtx.taskList;
+
+    t.push(taskInfo);
+
+    taskCtx.countTaskTypes(t);
+    setTimeout(props.onSave);
   }
 
   return (
     <form className={classes["task-page"]} onSubmit={submitHandler}>
-      <select name="select" className={classes["select-task"]} ref={TaskTypeRef} >
-        <option value="Not started">
-          Not started
-        </option>
+      <select
+        defaultValue=""
+        name="select"
+        className={classes["select-task"]}
+        ref={TaskTypeRef}
+      >
+        <option value="Not started">Not started</option>
         <option value="In progress">In progress</option>
         <option value="Complete">Complete</option>
       </select>
@@ -80,8 +85,8 @@ function Modal(props) {
         <span className="icon-clear"></span>
       </div>
       <input
-      onChange={handleChange}
-      name="titleTask"
+        onChange={handleChange}
+        name="titleTask"
         id="titleTask"
         className={mergeClasses(
           classes["input-style"],
@@ -93,7 +98,7 @@ function Modal(props) {
       />
       <br />
       <textarea
-      onChange={handleChange}
+        onChange={handleChange}
         placeholder="Add description"
         className={classes["description"]}
         name="description"
@@ -106,8 +111,8 @@ function Modal(props) {
       <label>
         Deadline <br />
         <input
-        onChange={handleChange}
-        name="deadline"
+          onChange={handleChange}
+          name="deadline"
           className={mergeClasses(
             classes["input-style"],
             classes["task-datetime-style"]
@@ -120,8 +125,8 @@ function Modal(props) {
       <label>
         Reminder <br />
         <input
-        onChange={handleChange}
-        name="reminder"
+          onChange={handleChange}
+          name="reminder"
           className={mergeClasses(
             classes["input-style"],
             classes["task-datetime-style"]
@@ -132,10 +137,7 @@ function Modal(props) {
       </label>
       <br />
       <div className={classes["btn-container"]}>
-        <button
-          id="saveButton"
-          className={classes["button-submit-style"]}
-        >
+        <button id="saveButton" className={classes["button-submit-style"]}>
           Save
         </button>
         <button
