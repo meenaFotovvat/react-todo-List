@@ -18,6 +18,7 @@ function TaskList() {
 
   function openTaskHandler() {
     setModalIsOpen(true);
+    
   }
 
   function closeModalHandler() {
@@ -42,6 +43,7 @@ function TaskList() {
                   taskDeadline={item.taskDeadline}
                   taskDescription={item.taskDescription}
                   taskReminder={item.taskReminder}
+                  onOpen={openTaskHandler}
                 />
               );
             })}
