@@ -16,6 +16,7 @@ function Modal(props) {
     ev.persist();
     setForm((pre) => ({ ...pre, [ev.target.name]: ev.target.value }));
   };
+
   const taskTitleRef = useRef();
   const taskDeadlineRef = useRef();
   const taskDescriptionRef = useRef();
@@ -23,26 +24,40 @@ function Modal(props) {
   const TaskTypeRef = useRef();
 
   function cancelHandler() {
-    props.onCancel();
+    props.setModalIsOpen(false);
   }
 
-  function saveHandler() {
-    props.onSave();
-  }
+  // function saveHandler() {
+  //   props.onSave();
+  // }
 
+  const selectedTask = props.selectedTask[0];
   function deleteHandler() {
-    props.onDelete();
-    // setUserTaskInfo((preTaskInfo) => {
-    //   return preTaskInfo.filter((taskList) => taskList.id !== taskId);
-    // });
+    const newList = taskCtx.taskList.filter((t) => t.id !== selectedTask.id);
+
+    setUserTaskInfo(newList);
+    taskCtx.listingTaskTypes(newList);
+    setTimeout(props.onCancel);
   }
 
-  function editHandler() {
-    props.onEdit();
-  }
-
-  function submitHandler(event) {
+  function checkHandler(event) {
     event.preventDefault();
+    if (selectedTask.id) {
+      selectedTask.taskTitle = taskTitleRef.current.value;
+      console.log('===================',taskTitleRef.current.value)
+      selectedTask.taskDescription = taskDescriptionRef.current.value;
+      selectedTask.taskReminder = taskReminderRef.current.value;
+      selectedTask.taskType = TaskTypeRef.current.value;
+      selectedTask.taskDeadline = taskDeadlineRef.current.value;
+      setUserTaskInfo(taskCtx.taskList);
+      taskCtx.listingTaskTypes(taskCtx.taskList);
+    } else {
+      submitHandler();
+    }
+    props.setModalIsOpen(false);
+  }
+
+  function submitHandler() {
 
     const enteredTitle = taskTitleRef.current.value;
     const enteredDeadline = taskDeadlineRef.current.value;
@@ -61,18 +76,24 @@ function Modal(props) {
     setUserTaskInfo((preTaskInfo) => {
       return preTaskInfo.concat(taskInfo);
     });
-    let t = taskCtx.taskList;
+    let taskLi = taskCtx.taskList;
 
-    t.push(taskInfo);
+    taskLi.push(taskInfo);
 
-    taskCtx.countTaskTypes(t);
-    setTimeout(props.onSave);
+    taskCtx.listingTaskTypes(taskLi);
+    setTimeout(() => props.setModalIsOpen(false));
   }
 
   return (
-    <form className={classes["task-page"]} onSubmit={submitHandler}>
+    <form className={classes["task-page"]} onSubmit={checkHandler}>
       <select
-        defaultValue=""
+        defaultValue={
+          props?.selectedTask &&
+          props?.selectedTask[0] &&
+          props?.selectedTask[0]?.taskType
+            ? props.selectedTask[0].taskType
+            : null
+        }
         name="select"
         className={classes["select-task"]}
         ref={TaskTypeRef}
@@ -95,6 +116,13 @@ function Modal(props) {
         placeholder="Add title"
         type="text"
         ref={taskTitleRef}
+        defaultValue={
+          props?.selectedTask &&
+          props?.selectedTask[0] &&
+          props?.selectedTask[0]?.taskTitle
+            ? props.selectedTask[0].taskTitle
+            : null
+        }
       />
       <br />
       <textarea
@@ -106,6 +134,13 @@ function Modal(props) {
         cols="30"
         rows="3"
         ref={taskDescriptionRef}
+        defaultValue={
+          props?.selectedTask &&
+          props?.selectedTask[0] &&
+          props?.selectedTask[0]?.taskDescription
+            ? props.selectedTask[0].taskDescription
+            : null
+        }
       ></textarea>
       <br />
       <label>
@@ -119,6 +154,13 @@ function Modal(props) {
           )}
           type="date"
           ref={taskDeadlineRef}
+          defaultValue={
+            props?.selectedTask &&
+            props?.selectedTask[0] &&
+            props?.selectedTask[0]?.taskDeadline
+              ? props.selectedTask[0].taskDeadline
+              : null
+          }
         />
       </label>
       <br />
@@ -133,20 +175,19 @@ function Modal(props) {
           )}
           type="time"
           ref={taskReminderRef}
+          defaultValue={
+            props?.selectedTask &&
+            props?.selectedTask[0] &&
+            props?.selectedTask[0]?.taskReminder
+              ? props.selectedTask[0].taskReminder
+              : null
+          }
         />
       </label>
       <br />
       <div className={classes["btn-container"]}>
         <button id="saveButton" className={classes["button-submit-style"]}>
-          Save
-        </button>
-        <button
-          id="editButton"
-          className={classes["button-submit-style"]}
-          type="button"
-          onClick={editHandler}
-        >
-          Edit
+          {props.selectedTask[0] ? "Edit" : "Save"}
         </button>
         <button
           type="button"

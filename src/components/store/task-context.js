@@ -22,11 +22,11 @@ export function TaskContextProvider(props) {
     notStartedList: [],
     inProgressList: [],
     completeList: [],
-    countTaskTypes: (e) => countTaskTypes(e),
+    listingTaskTypes: (e) => listingTaskTypes(e),
   });
 
   useEffect(() => {
-    countTaskTypes(context.taskList);
+    listingTaskTypes(context.taskList);
   }, []);
   // const taskList = userTaskInfo;
   // console.log(taskList);
@@ -49,7 +49,7 @@ export function TaskContextProvider(props) {
 
   // let List=[{title:"",data:[]},{title:"",data:[]},{title:"",data:[]}]
 
-  function countTaskTypes(arr) {
+  function listingTaskTypes(arr) {
     let totalNotStartedTasks = 0;
     let totalInProgressTasks = 0;
     let totalcompleteTasks = 0;
@@ -90,7 +90,7 @@ export function TaskContextProvider(props) {
       notStartedList,
       inProgressList,
       completeList,
-      countTaskTypes: (e) => countTaskTypes(e),
+      listingTaskTypes: (e) => listingTaskTypes(e),
     });
   }
 

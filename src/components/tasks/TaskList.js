@@ -14,18 +14,27 @@ function TaskList() {
   const notStartedList = taskCtx.notStartedList;
   const inProgressList = taskCtx.inProgressList;
   const completeList = taskCtx.completeList;
+  let selectedTaskId;
+  
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [itemModal, setModal] = useState();
 
-  function openTaskHandler() {
+  function openTaskHandler(e) {
     setModalIsOpen(true);
-    
+    selectedTaskId = e.target.id;
+    const selectedTask = taskCtx.taskList.filter(element => 
+      (element.id === selectedTaskId)
+    );
+    if (selectedTask){
+      setModal(selectedTask);
+    } else {
+      setModal();
+    }
   }
-
   function closeModalHandler() {
     setModalIsOpen(false);
   }
 
-  const [value, setValue] = useState();
   return (
     <>
       <Card>
@@ -66,6 +75,7 @@ function TaskList() {
                   taskDeadline={item.taskDeadline}
                   taskDescription={item.taskDescription}
                   taskReminder={item.taskReminder}
+                  onOpen={openTaskHandler}
                 />
               );
             })}
@@ -87,6 +97,7 @@ function TaskList() {
                   taskDeadline={item.taskDeadline}
                   taskDescription={item.taskDescription}
                   taskReminder={item.taskReminder}
+                  onOpen={openTaskHandler}
                 />
               );
             })}
@@ -95,10 +106,9 @@ function TaskList() {
       </Card>
       {modalIsOpen && (
         <Modal
+          selectedTask = {itemModal}
+          setModalIsOpen={setModalIsOpen}
           onCancel={closeModalHandler}
-          onSave={closeModalHandler}
-          onDelete={closeModalHandler}
-          onEdit={closeModalHandler}
         />
       )}
       {modalIsOpen && <Backdrop onCancel={closeModalHandler} />}
