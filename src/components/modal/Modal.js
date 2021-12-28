@@ -42,7 +42,7 @@ function Modal(props) {
 
   function checkHandler(event) {
     event.preventDefault();
-    if (selectedTask.id) {
+    if (selectedTask) {
       selectedTask.taskTitle = taskTitleRef.current.value;
       console.log('===================',taskTitleRef.current.value)
       selectedTask.taskDescription = taskDescriptionRef.current.value;
