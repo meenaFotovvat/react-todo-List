@@ -27,10 +27,6 @@ function Modal(props) {
     props.setModalIsOpen(false);
   }
 
-  // function saveHandler() {
-  //   props.onSave();
-  // }
-
   const selectedTask = props.selectedTask[0];
   function deleteHandler() {
     const newList = taskCtx.taskList.filter((t) => t.id !== selectedTask.id);
@@ -44,12 +40,12 @@ function Modal(props) {
     event.preventDefault();
     if (selectedTask) {
       selectedTask.taskTitle = taskTitleRef.current.value;
-      console.log('===================',taskTitleRef.current.value)
       selectedTask.taskDescription = taskDescriptionRef.current.value;
       selectedTask.taskReminder = taskReminderRef.current.value;
       selectedTask.taskType = TaskTypeRef.current.value;
       selectedTask.taskDeadline = taskDeadlineRef.current.value;
-      setUserTaskInfo(taskCtx.taskList);
+
+      localStorage.setItem("listArr", JSON.stringify(taskCtx.taskList));
       taskCtx.listingTaskTypes(taskCtx.taskList);
     } else {
       submitHandler();
@@ -58,7 +54,6 @@ function Modal(props) {
   }
 
   function submitHandler() {
-
     const enteredTitle = taskTitleRef.current.value;
     const enteredDeadline = taskDeadlineRef.current.value;
     const enteredDescription = taskDescriptionRef.current.value;
