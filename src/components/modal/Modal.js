@@ -46,7 +46,7 @@ function Modal(props) {
       selectedTask.taskDeadline = taskDeadlineRef.current.value;
 
       localStorage.setItem("listArr", JSON.stringify(taskCtx.taskList));
-      taskCtx.listingTaskTypes(taskCtx.taskList);
+      // taskCtx.listingTaskTypes(taskCtx.taskList);
     } else {
       submitHandler();
     }
@@ -68,13 +68,14 @@ function Modal(props) {
       taskType: enteredType,
       id: Date.now().toString(),
     };
+    console.log('submit',taskInfo )
     setUserTaskInfo((preTaskInfo) => {
       return preTaskInfo.concat(taskInfo);
     });
     let taskLi = taskCtx.taskList;
-
+    
     taskLi.push(taskInfo);
-
+    localStorage.setItem("listArr", JSON.stringify(taskLi));
     taskCtx.listingTaskTypes(taskLi);
     setTimeout(() => props.setModalIsOpen(false));
   }
