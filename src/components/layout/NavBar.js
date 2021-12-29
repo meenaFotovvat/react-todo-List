@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+import TaskContext from "../store/task-context";
 
 import classes from "./NavBar.module.scss";
 import NavImg from "../../assets/imgs/profileImg.jpg";
 
-function NavBar() {
+function NavBar(props) {
+  const taskCtx = useContext(TaskContext);
+
+  const [input, setInput] = useState('');
+  const [taskList, setTaskList] = useState(taskCtx.taskList);
+   
+  const searchparam = (e) => {
+    const filtered = taskList.filter(task => {
+     return task.taskTitle.toLowerCase().includes(e.target.value.toLowerCase());
+      // task.taskTitle.toLowerCase().includes(e.target.value.toLowerCase());
+    })
+    setInput(e.target.value);
+    // props.setResuat(filtered)
+    taskCtx.listingTaskTypes(filtered);
+ }
+
+  useEffect( () => {
+    setTaskList(taskCtx.taskList);
+  }, []);
+
   return (
     <div className={classes.nav}>
       <div className={classes["search-container"]}>
         <span className="icon-find_magnifier_magnifying-glass_search_icon"></span>
-        <input className={classes['search-box']} type="search" placeholder="Search" />
+        <input className={classes['search-box']} type="search" placeholder="Search" onChange={searchparam} />
       </div>
       <div className={classes['icons-container']}>
         <span className="icon-help_outline"></span>
