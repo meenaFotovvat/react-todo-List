@@ -28,24 +28,6 @@ export function TaskContextProvider(props) {
   useEffect(() => {
     listingTaskTypes(context.taskList);
   }, []);
-  // const taskList = userTaskInfo;
-  // console.log(taskList);
-  // const saveTaskHandler= (taskInfo) =>  {
-  //   setUserTaskInfo(userTaskInfo.concat(taskInfo))
-
-  // }
-
-  // function editTaskHandler(taskId) {
-  //   setUserTaskInfo(() => {
-  //     return;
-  //   });
-  // }
-
-  // function deleteTaskHandler(taskId) {
-  //   setUserTaskInfo((preTaskInfo) => {
-  //     return preTaskInfo.filter((taskList) => taskList.id !== taskId);
-  //   });
-  // }
 
   // let List=[{title:"",data:[]},{title:"",data:[]},{title:"",data:[]}]
 

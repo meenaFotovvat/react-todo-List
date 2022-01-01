@@ -16,7 +16,6 @@ function NavBar(props) {
       // task.taskTitle.toLowerCase().includes(e.target.value.toLowerCase());
     })
     setInput(e.target.value);
-    // props.setResuat(filtered)
     taskCtx.listingTaskTypes(filtered);
  }
 

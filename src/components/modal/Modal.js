@@ -68,7 +68,6 @@ function Modal(props) {
       taskType: enteredType,
       id: Date.now().toString(),
     };
-    console.log('submit',taskInfo )
     setUserTaskInfo((preTaskInfo) => {
       return preTaskInfo.concat(taskInfo);
     });
