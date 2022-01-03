@@ -7,24 +7,22 @@ function Taskbar() {
   const taskCtx = useContext(TaskContext);
 
   // const [timeFilter, setTimeFilter] = useState("");
-  const [taskList, setTaskList] = useState([]);
+  const [todayTaskList, setTodayTaskList] = useState(taskCtx.taskList);
 
-  const [rrrr, setRrrr] = useState([]);
-  const [ttt, setTtt] = useState([]);
-
+  const [monthTaskList, setMonthTaskList] = useState(taskCtx.taskList);
+  const [yearTaskList, setYearTaskList] = useState(taskCtx.taskList);
 
   const filterTime = (e) => {
-
     // setTimeFilter(e.target.value);
     const currentData = new Date();
-    console.log("currentData", currentData);
+    // console.log("currentData", currentData);
 
-    let todayTaskList = [];
+    // let todayTaskList = [];
     // let thisWeekTaskList = [];
-    let thisMonthTaskList = [];
-    let thisYearTaskList = [];
+    // let thisMonthTaskList = [];
+    // let thisYearTaskList = [];
 
-    let taskCheckTimeList = [];
+    // let taskCheckTimeList = [];
 
     // taskCtx.taskList.forEach((arrayItem) => {
     //   let taskDate = arrayItem.taskDeadline;
@@ -56,9 +54,9 @@ function Taskbar() {
       // console.log("today", taskList);
       // taskCtx.listingTaskTypes(taskList);
 
-      let res = [];
+      let thisDayTaskList = [];
       taskCtx.taskList.map((item) => {
-        let temp = item.taskDeadline.split("-");
+        let splitTaskDeadline = item.taskDeadline.split("-");
         // console.log(
         //   temp,
         //   currentData.getFullYear(),
@@ -68,20 +66,22 @@ function Taskbar() {
         //   temp[1] == currentData.getMonth() + 1,
         //   temp[2] == currentData.getDay()
         // );
-        let c = currentData.toLocaleDateString().split("/");
-        console.log(
-          currentData.toLocaleDateString(),
-          c,
-          item.taskDeadline,
-          temp
-        );
-        if (+temp[0] == +c[2] && +temp[1] == +c[0] && +temp[2] == +c[1]) {
-          res.push(item);
+        let currentDataToString = currentData.toLocaleDateString().split("/");
+        if (
+          +splitTaskDeadline[0] === +currentDataToString[2] &&
+          +splitTaskDeadline[1] === +currentDataToString[0] &&
+          +splitTaskDeadline[2] === +currentDataToString[1]
+        ) {
+          thisDayTaskList.push(item);
+          setTodayTaskList([]);
+
+          console.log('thisDayTaskList',thisDayTaskList);
+
         }
       });
-      setTaskList(res);
-      taskCtx.listingTaskTypes(res);
-      console.log(res);
+      setTodayTaskList(thisDayTaskList);
+      taskCtx.listingTaskTypes(todayTaskList);
+      console.log('todayTaskList',todayTaskList);
     } else if (e.target.value === "This Month") {
       // console.log("This Month");
       // const idTimeList = taskCheckTimeList.filter((arrayItem) => {
@@ -102,20 +102,21 @@ function Taskbar() {
       // console.log("This Month", rrrr);
       // taskCtx.listingTaskTypes(rrrr);
 
-      let res = [];
+      let thisMonthTaskList = [];
       taskCtx.taskList.map((item) => {
-        let temp = item.taskDeadline.split("-");
+        let splitTaskDeadline = item.taskDeadline.split("-");
 
+        let currentDataToString = currentData.toLocaleDateString().split("/");
         if (
-          temp[0] == currentData.getFullYear() &&
-          temp[1] == currentData.getMonth() + 1
+          +splitTaskDeadline[0] === +currentDataToString[2] &&
+          +splitTaskDeadline[1] === +currentDataToString[0]
         ) {
-          res.push(item);
+          thisMonthTaskList.push(item);
         }
       });
-      setRrrr(res);
-      taskCtx.listingTaskTypes(res);
-      console.log(res);
+      setMonthTaskList(thisMonthTaskList);
+      taskCtx.listingTaskTypes(monthTaskList);
+      console.log("month", thisMonthTaskList);
     } else if (e.target.value === "This Year") {
       // console.log("This Year", taskCheckTimeList);
       // const idTimeList = taskCheckTimeList.filter((arrayItem) => {
@@ -134,23 +135,32 @@ function Taskbar() {
       // setTtt(filtered);
       // console.log("Year", ttt);    let res = [];
       // taskCtx.listingTaskTypes(ttt);
-      let res = [];
+      let thisYearTaskList = [];
       taskCtx.taskList.map((item) => {
-        let year = item.taskDeadline.split("-")[0];
+        let splitTaskDeadline = item.taskDeadline.split("-");
+        let currentDataToString = currentData.toLocaleDateString().split("/");
 
-        if (year == currentData.getFullYear()) {
-          res.push(item);
+        if (+splitTaskDeadline[0] === +currentDataToString[2]) {
+          thisYearTaskList.push(item);
         }
       });
-      setTtt(res);
-      taskCtx.listingTaskTypes(res);
-      console.log(res);
+      setYearTaskList(thisYearTaskList);
+      taskCtx.listingTaskTypes(yearTaskList);
+      console.log("year", thisYearTaskList);
     }
   };
 
-  useEffect(() => {
-    setTaskList(taskCtx.taskList);
-  }, taskList);
+  // useEffect(() => {
+  //   setTodayTaskList(taskCtx.taskList);
+  // }, []);
+
+  // useEffect(() => {
+  //   setMonthTaskList(taskCtx.taskList);
+  // }, []);
+
+  // useEffect(() => {
+  //   setYearTaskList(taskCtx.taskList);
+  // }, []);
 
   return (
     <div className={classes["main-header"]}>
