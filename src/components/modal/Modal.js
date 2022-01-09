@@ -46,7 +46,7 @@ function Modal(props) {
       selectedTask.taskDeadline = taskDeadlineRef.current.value;
 
       localStorage.setItem("listArr", JSON.stringify(taskCtx.taskList));
-      // taskCtx.listingTaskTypes(taskCtx.taskList);
+      taskCtx.listingTaskTypes(taskCtx.taskList);
     } else {
       submitHandler();
     }

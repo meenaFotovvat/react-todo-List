@@ -1,11 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import TaskContext from "../store/task-context";
+import useLocalStorage from "react-localstorage-hook";
 
 import classes from "./Taskbar.module.scss";
 
 function Taskbar() {
   const taskCtx = useContext(TaskContext);
-
+  const localStorageList = useLocalStorage("listArr", []);
   // const [timeFilter, setTimeFilter] = useState("");
   const [todayTaskList, setTodayTaskList] = useState(taskCtx.taskList);
 
@@ -55,33 +56,28 @@ function Taskbar() {
       // taskCtx.listingTaskTypes(taskList);
 
       let thisDayTaskList = [];
-      taskCtx.taskList.map((item) => {
+      console.log(localStorageList)
+      localStorageList[0].forEach((item) => {
+        console.log(localStorageList)
         let splitTaskDeadline = item.taskDeadline.split("-");
-        // console.log(
-        //   temp,
-        //   currentData.getFullYear(),
-        //   currentData.getMonth(),
-        //   currentData.getDay(),
-        //   temp[0] == currentData.getFullYear(),
-        //   temp[1] == currentData.getMonth() + 1,
-        //   temp[2] == currentData.getDay()
-        // );
         let currentDataToString = currentData.toLocaleDateString().split("/");
         if (
           +splitTaskDeadline[0] === +currentDataToString[2] &&
           +splitTaskDeadline[1] === +currentDataToString[0] &&
           +splitTaskDeadline[2] === +currentDataToString[1]
         ) {
+          // setTodayTaskList([]);
           thisDayTaskList.push(item);
-          setTodayTaskList([]);
 
-          console.log('thisDayTaskList',thisDayTaskList);
-
+          console.log("thisDayTaskList", thisDayTaskList);
         }
       });
-      setTodayTaskList(thisDayTaskList);
-      taskCtx.listingTaskTypes(todayTaskList);
-      console.log('todayTaskList',todayTaskList);
+      // setTodayTaskList((todayTaskList) => {
+      //   return thisDayTaskList;
+      // });
+      // setTodayTaskList(thisDayTaskList)
+      taskCtx.listingTaskTypes(thisDayTaskList);
+      console.log("todayTaskList", todayTaskList);
     } else if (e.target.value === "This Month") {
       // console.log("This Month");
       // const idTimeList = taskCheckTimeList.filter((arrayItem) => {
@@ -103,7 +99,7 @@ function Taskbar() {
       // taskCtx.listingTaskTypes(rrrr);
 
       let thisMonthTaskList = [];
-      taskCtx.taskList.map((item) => {
+      localStorageList[0].forEach((item) => {
         let splitTaskDeadline = item.taskDeadline.split("-");
 
         let currentDataToString = currentData.toLocaleDateString().split("/");
@@ -111,11 +107,15 @@ function Taskbar() {
           +splitTaskDeadline[0] === +currentDataToString[2] &&
           +splitTaskDeadline[1] === +currentDataToString[0]
         ) {
+          // setMonthTaskList([]);
           thisMonthTaskList.push(item);
+          console.log("thisMonthTaskList", thisMonthTaskList);
         }
       });
-      setMonthTaskList(thisMonthTaskList);
-      taskCtx.listingTaskTypes(monthTaskList);
+      setMonthTaskList((monthTaskList) => {
+        return thisMonthTaskList;
+      });
+      taskCtx.listingTaskTypes(thisMonthTaskList);
       console.log("month", thisMonthTaskList);
     } else if (e.target.value === "This Year") {
       // console.log("This Year", taskCheckTimeList);
@@ -136,16 +136,20 @@ function Taskbar() {
       // console.log("Year", ttt);    let res = [];
       // taskCtx.listingTaskTypes(ttt);
       let thisYearTaskList = [];
-      taskCtx.taskList.map((item) => {
+      localStorageList[0].forEach((item) => {
         let splitTaskDeadline = item.taskDeadline.split("-");
         let currentDataToString = currentData.toLocaleDateString().split("/");
 
         if (+splitTaskDeadline[0] === +currentDataToString[2]) {
+          // setYearTaskList([]);
           thisYearTaskList.push(item);
         }
+        console.log("ifyear", thisYearTaskList);
       });
-      setYearTaskList(thisYearTaskList);
-      taskCtx.listingTaskTypes(yearTaskList);
+      setYearTaskList((yearTaskList) => {
+        return thisYearTaskList;
+      });
+      taskCtx.listingTaskTypes(thisYearTaskList);
       console.log("year", thisYearTaskList);
     }
   };
