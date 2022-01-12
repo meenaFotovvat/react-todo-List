@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./emptyPage.module.scss";
-import { ReactComponent as SvgIcon } from "../../assets/imgs/emptyPageImg.svg";
+import { ReactComponent as SvgIcon } from "../assets/imgs/emptyPageImg.svg";
 
 function EmptyPage() {
   return (

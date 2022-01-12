@@ -1,7 +1,7 @@
 import React from "react";
 
 import classes from "./Layout.module.scss";
-import NavBar from "./NavBar.js";
+import NavBar from "./NavBar.component.js";
 import Sidebar from "./Sidebar.js";
 
 function Layout(props) {
