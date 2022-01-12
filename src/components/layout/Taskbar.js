@@ -8,10 +8,10 @@ function Taskbar() {
   const taskCtx = useContext(TaskContext);
   const localStorageList = useLocalStorage("listArr", []);
   // const [timeFilter, setTimeFilter] = useState("");
-  const [todayTaskList, setTodayTaskList] = useState(taskCtx.taskList);
+  // const [todayTaskList, setTodayTaskList] = useState(taskCtx.taskList);
 
-  const [monthTaskList, setMonthTaskList] = useState(taskCtx.taskList);
-  const [yearTaskList, setYearTaskList] = useState(taskCtx.taskList);
+  // const [monthTaskList, setMonthTaskList] = useState(taskCtx.taskList);
+  // const [yearTaskList, setYearTaskList] = useState(taskCtx.taskList);
 
   const filterTime = (e) => {
     // setTimeFilter(e.target.value);
@@ -77,7 +77,7 @@ function Taskbar() {
       // });
       // setTodayTaskList(thisDayTaskList)
       taskCtx.listingTaskTypes(thisDayTaskList);
-      console.log("todayTaskList", todayTaskList);
+      console.log("todayTaskList", thisDayTaskList);
     } else if (e.target.value === "This Month") {
       // console.log("This Month");
       // const idTimeList = taskCheckTimeList.filter((arrayItem) => {
@@ -112,9 +112,9 @@ function Taskbar() {
           console.log("thisMonthTaskList", thisMonthTaskList);
         }
       });
-      setMonthTaskList((monthTaskList) => {
-        return thisMonthTaskList;
-      });
+      // setMonthTaskList((monthTaskList) => {
+      //   return thisMonthTaskList;
+      // });
       taskCtx.listingTaskTypes(thisMonthTaskList);
       console.log("month", thisMonthTaskList);
     } else if (e.target.value === "This Year") {
@@ -146,9 +146,9 @@ function Taskbar() {
         }
         console.log("ifyear", thisYearTaskList);
       });
-      setYearTaskList((yearTaskList) => {
-        return thisYearTaskList;
-      });
+      // setYearTaskList((yearTaskList) => {
+      //   return thisYearTaskList;
+      // });
       taskCtx.listingTaskTypes(thisYearTaskList);
       console.log("year", thisYearTaskList);
     }
