@@ -1,8 +1,8 @@
 import React from "react";
 
-import Taskbar from "../components/layout/Taskbar.js";
+import Taskbar from "../components/layout/Taskbar.component.js";
 import classes from "./TaskPage.module.scss";
-import TaskList from "../components/tasks/TaskList";
+import TaskList from "../components/tasks/TaskList.component";
 
 function TaskPage() {
   

@@ -2,12 +2,12 @@ import React, { useContext, useState } from "react";
 import TaskContext from "../store/task-context";
 
 import classes from "./TaskList.module.scss";
-import TaskHeader from "../content/TaskHeader.js";
-import TaskItems from "./TaskItems";
-import Card from "../../components/ui/Card.js";
-import PlusIconContainer from "../content/PlusIconContainer.js";
-import Backdrop from "../modal/Backdrop.js";
-import Modal from "../modal/Modal.js";
+import TaskHeader from "../content/TaskHeader.component.js";
+import TaskItems from "./TaskItems.component";
+import Card from "../ui/Card.component.js";
+import PlusIconContainer from "../content/PlusIconContainer.component.js";
+import Backdrop from "../modal/Backdrop.component.js";
+import Modal from "../modal/Modal.component.js";
 
 function TaskList() {
   const taskCtx = useContext(TaskContext);

@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./Layout.module.scss";
 import NavBar from "./NavBar.component.js";
-import Sidebar from "./Sidebar.js";
+import Sidebar from "./Sidebar.component.js";
 
 function Layout(props) {
   return (
