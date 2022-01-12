@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-// import { useLocalStorage } from "../../lpers/localStorage/useLocalStorage.js";
 import useLocalStorage from "react-localstorage-hook";
 
 const TaskContext = createContext({

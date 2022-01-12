@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from "react";
 // import TaskContext from "../store/task-context";
 // import useLocalStorage from 'react-localstorage-hook';
-import { useLocalStorage } from "../../lpers/localStorage/useLocalStorage.js";
+import { useLocalStorage } from "../../helpers/localStorage/useLocalStorage.js";
 
 import classes from "./Modal.module.scss";
 import { mergeClasses } from "../../utils";
