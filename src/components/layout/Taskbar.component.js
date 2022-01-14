@@ -16,7 +16,6 @@ function Taskbar() {
   const filterTime = (e) => {
     // setTimeFilter(e.target.value);
     const currentData = new Date();
-    // console.log("currentData", currentData);
 
     // let todayTaskList = [];
     // let thisWeekTaskList = [];
@@ -33,13 +32,11 @@ function Taskbar() {
     //   let taskDeadlineItems = taskDate.concat(" ", taskTime);
     //   let taskDeadlineItemsCal = new Date(taskDeadlineItems);
 
-    //   console.log("taskDeadlineItemsCal", taskDeadlineItemsCal);
     //   let DeadlineListItems = { taskDeadlineItemsCal, taskId };
     //   taskCheckTimeList.push(DeadlineListItems);
     // });
 
     if (e.target.value === "Today") {
-      // console.log("today");
       // const idTimeList = taskCheckTimeList.filter((arrayItem) => {
       //   if (
       //     currentData.getDate() === arrayItem.taskDeadlineItemsCal.getDate()
@@ -52,13 +49,10 @@ function Taskbar() {
       // );
       // // setTimeFilter(e.target.value);
       // setTaskList(filtered);
-      // console.log("today", taskList);
       // taskCtx.listingTaskTypes(taskList);
 
       let thisDayTaskList = [];
-      console.log(localStorageList)
       localStorageList[0].forEach((item) => {
-        console.log(localStorageList)
         let splitTaskDeadline = item.taskDeadline.split("-");
         let currentDataToString = currentData.toLocaleDateString().split("/");
         if (
@@ -68,8 +62,6 @@ function Taskbar() {
         ) {
           // setTodayTaskList([]);
           thisDayTaskList.push(item);
-
-          console.log("thisDayTaskList", thisDayTaskList);
         }
       });
       // setTodayTaskList((todayTaskList) => {
@@ -77,9 +69,7 @@ function Taskbar() {
       // });
       // setTodayTaskList(thisDayTaskList)
       taskCtx.listingTaskTypes(thisDayTaskList);
-      console.log("todayTaskList", thisDayTaskList);
     } else if (e.target.value === "This Month") {
-      // console.log("This Month");
       // const idTimeList = taskCheckTimeList.filter((arrayItem) => {
       //   if (
       //     currentData.getMonth() + 1 ===
@@ -88,14 +78,12 @@ function Taskbar() {
       //     thisMonthTaskList.push(arrayItem.taskId);
       //   }
       // });
-      // console.log("Month", thisMonthTaskList);
       // const filtered = taskCtx.taskList.filter((item) =>
       //   thisMonthTaskList.includes(item.id)
       // );
       // // setTimeFilter(e.target.value);
 
       // setRrrr(filtered);
-      // console.log("This Month", rrrr);
       // taskCtx.listingTaskTypes(rrrr);
 
       let thisMonthTaskList = [];
@@ -109,16 +97,13 @@ function Taskbar() {
         ) {
           // setMonthTaskList([]);
           thisMonthTaskList.push(item);
-          console.log("thisMonthTaskList", thisMonthTaskList);
         }
       });
       // setMonthTaskList((monthTaskList) => {
       //   return thisMonthTaskList;
       // });
       taskCtx.listingTaskTypes(thisMonthTaskList);
-      console.log("month", thisMonthTaskList);
     } else if (e.target.value === "This Year") {
-      // console.log("This Year", taskCheckTimeList);
       // const idTimeList = taskCheckTimeList.filter((arrayItem) => {
       //   if (
       //     currentData.getFullYear() ===
@@ -132,8 +117,8 @@ function Taskbar() {
       // );
       // // setTimeFilter(e.target.value);
       // // taskCtx.listingTaskTypes(filtered);
-      // setTtt(filtered);
-      // console.log("Year", ttt);    let res = [];
+      // setTtt(filtered);    
+      // let res = [];
       // taskCtx.listingTaskTypes(ttt);
       let thisYearTaskList = [];
       localStorageList[0].forEach((item) => {
@@ -144,13 +129,11 @@ function Taskbar() {
           // setYearTaskList([]);
           thisYearTaskList.push(item);
         }
-        console.log("ifyear", thisYearTaskList);
       });
       // setYearTaskList((yearTaskList) => {
       //   return thisYearTaskList;
       // });
       taskCtx.listingTaskTypes(thisYearTaskList);
-      console.log("year", thisYearTaskList);
     }
   };
 
