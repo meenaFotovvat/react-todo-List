@@ -1,21 +1,37 @@
 .header-tasks {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  .h2-style {
+    align-self: center;
+    color: #020202;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+  .task-counter {
+    width: 30px;
+    height: 30px;
+    background-color: #e9f2f1;
+    border-radius: 8px;
     display: flex;
-    width: 100%;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    color: #2e9986;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .header-tasks {
     .h2-style {
-        align-self: flex-start;
-        color: #020202;
-        font-size: 18px;
-        white-space: nowrap;
+      font-size: 14px;
     }
-    .task-counter {
-        width: 30px;
-        height: 30px;
-        background-color: #e9f2f1;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #2e9986;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .header-tasks {
+    .h2-style {
+      font-size: 18px;
     }
+  }
 }
