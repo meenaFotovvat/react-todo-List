@@ -1,4 +1,6 @@
 import React, { useContext, useRef } from "react";
+
+import { Button } from "@material-ui/core";
 // import TaskContext from "../store/task-context";
 // import useLocalStorage from 'react-localstorage-hook';
 import { useLocalStorage } from "../../helpers/localStorage/useLocalStorage.js";
@@ -72,7 +74,7 @@ function Modal(props) {
       return preTaskInfo.concat(taskInfo);
     });
     let taskLi = taskCtx.taskList;
-    
+
     taskLi.push(taskInfo);
     localStorage.setItem("listArr", JSON.stringify(taskLi));
     taskCtx.listingTaskTypes(taskLi);
@@ -80,7 +82,9 @@ function Modal(props) {
   }
 
   return (
-    <form className={classes["task-page"]} onSubmit={checkHandler}>
+    <form className={classes["task-page"]}>
+      {/* before using Button component in material ui core submiting form as below */}
+      {/* <form className={classes["task-page"]} onSubmit={checkHandler}>*/}
       <select
         defaultValue={
           props?.selectedTask &&
@@ -181,9 +185,17 @@ function Modal(props) {
       </label>
       <br />
       <div className={classes["btn-container"]}>
-        <button id="saveButton" className={classes["button-submit-style"]}>
+        <Button
+          onClick={checkHandler}
+          id="saveButton"
+          variant="contained"
+          color="primary"
+        >
           {props.selectedTask[0] ? "Edit" : "Save"}
-        </button>
+        </Button>
+        {/* <button id="saveButton" className={classes["button-submit-style"]}>
+          {props.selectedTask[0] ? "Edit" : "Save"}
+        </button> */}
         <button
           type="button"
           className={classes["delete-btn"]}
