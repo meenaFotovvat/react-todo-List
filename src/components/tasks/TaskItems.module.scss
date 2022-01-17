@@ -29,3 +29,36 @@
     
     }
 }
+
+.deadline-style {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: fit-content;
+    width: 100%;
+    background-color: #d7d2f1;
+    border-radius: 5%;
+    margin-top: 20px;
+    padding-bottom: 5px;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    // border: 0.5px solid rgb(134, 134, 192);
+    .task-item-title{
+        // margin-right: 130px;
+        font-weight: 700;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    span{
+        font-size: 20px;
+    }
+    p{
+        margin-top: 15px;
+        text-align: justify;
+        font-size: 14px;
+    
+    }
+}

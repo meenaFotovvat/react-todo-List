@@ -15,17 +15,19 @@ function TaskList() {
   const inProgressList = taskCtx.inProgressList;
   const completeList = taskCtx.completeList;
   let selectedTaskId;
-  
+
+  const currentData = new Date();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [itemModal, setModal] = useState();
 
   function openTaskHandler(e) {
     setModalIsOpen(true);
     selectedTaskId = e.target.id;
-    const selectedTask = taskCtx.taskList.filter(element => 
+    const selectedTask = taskCtx.taskList.filter(element =>
       (element.id === selectedTaskId)
     );
-    if (selectedTask){
+    if (selectedTask) {
       setModal(selectedTask);
     } else {
       setModal();
@@ -43,6 +45,12 @@ function TaskList() {
         {notStartedList && notStartedList.length > 0 && (
           <ul className={classes["task-style"]}>
             {notStartedList.map((item) => {
+              let taskDate = item.taskDeadline;
+              let taskTime = item.taskReminder;
+
+              let taskDeadlineItems = taskDate.concat(' ', taskTime);
+              let taskDeadlineItemsMili = new Date(taskDeadlineItems).getTime();
+
               return (
                 <TaskItems
                   key={item.id}
@@ -53,6 +61,7 @@ function TaskList() {
                   taskDescription={item.taskDescription}
                   taskReminder={item.taskReminder}
                   onOpen={openTaskHandler}
+                  classOfLi={taskDeadlineItemsMili - currentData < 10800000 ? 'deadline-style' : 'task-list-items'}
                 />
               );
             })}
@@ -66,6 +75,12 @@ function TaskList() {
         {inProgressList && inProgressList.length > 0 && (
           <ul className={classes["task-style"]}>
             {inProgressList.map((item) => {
+              let taskDate = item.taskDeadline;
+              let taskTime = item.taskReminder;
+
+              let taskDeadlineItems = taskDate.concat(' ', taskTime);
+              let taskDeadlineItemsMili = new Date(taskDeadlineItems).getTime();
+
               return (
                 <TaskItems
                   key={item.id}
@@ -76,6 +91,7 @@ function TaskList() {
                   taskDescription={item.taskDescription}
                   taskReminder={item.taskReminder}
                   onOpen={openTaskHandler}
+                  classOfLi={taskDeadlineItemsMili - currentData < 10800000 ? 'deadline-style' : 'task-list-items'}
                 />
               );
             })}
@@ -98,6 +114,7 @@ function TaskList() {
                   taskDescription={item.taskDescription}
                   taskReminder={item.taskReminder}
                   onOpen={openTaskHandler}
+                  classOfLi= {'task-list-items'}
                 />
               );
             })}
@@ -106,7 +123,7 @@ function TaskList() {
       </Card>
       {modalIsOpen && (
         <Modal
-          selectedTask = {itemModal}
+          selectedTask={itemModal}
           setModalIsOpen={setModalIsOpen}
           onCancel={closeModalHandler}
         />
